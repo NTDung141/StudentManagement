@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import Home from "./components/Home";
-import StudentList from "./components/StudentList";
+import HomePage from "./pages/HomePage";
+import StudentListPage from "./pages/StudentListPage";
 
 const routes = [
     {
         path: "/",
         exact: true,
-        main: () => <Home />
+        main: () => <HomePage />
     },
     {
         path: "/students",
         exact: false,
-        main: () => <StudentList />
+        main: () => <StudentListPage />
     }
 ]
 
