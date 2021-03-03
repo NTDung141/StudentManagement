@@ -7,7 +7,6 @@ class StudentListPage extends Component {
             <StudentList />
         );
     }
-
 }
 
 export default StudentListPage;

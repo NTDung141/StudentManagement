@@ -31,7 +31,7 @@ class StudentList extends Component {
         })
         return (
             <div className="container">
-                <div className="mb-3 mt-3">
+                <div className="mb-3 mt-3 text-center">
                     <h1>Student List</h1>
                 </div>
                 <table className="table table-bordered table-hover">

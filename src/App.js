@@ -3,16 +3,18 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  NavLink
+  Route
 } from "react-router-dom";
 import Menu from './components/Menu';
 import routes from "./routes";
 
 class App extends Component {
+
   render() {
+    console.log(this.props.isViewDetail);
+
     return (
-      <Router>
+      < Router >
         <div className="App">
           {/* Menu */}
           <Menu />
@@ -21,7 +23,7 @@ class App extends Component {
             {this.showContentMenu(routes)}
           </Switch>
         </div>
-      </Router>
+      </Router >
 
     );
   }
