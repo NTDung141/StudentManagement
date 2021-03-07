@@ -1,5 +1,6 @@
 import React from "react";
 import StudentDetails from "./components/StudentDetails";
+import StudentForm from "./components/StudentForm";
 import HomePage from "./pages/HomePage";
 import StudentListPage from "./pages/StudentListPage";
 
@@ -15,7 +16,12 @@ const routes = [
         main: () => <StudentListPage />
     },
     {
-        path: "/student/detail",
+        path: "/add",
+        exact: false,
+        main: () => <StudentForm />
+    },
+    {
+        path: "/studentDetail",
         exact: false,
         main: () => <StudentDetails />
     }

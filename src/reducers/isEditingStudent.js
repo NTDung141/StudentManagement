@@ -4,7 +4,7 @@ var initialState = null;
 
 var myReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.VIEW_DETAIL:
+        case types.EDIT_STUDENT:
             state = action.student;
             return state;
         default:

@@ -18,7 +18,7 @@ class Student extends Component {
                 <td>{student.id}</td>
                 <td>{student.name}</td>
                 <td>
-                    <Link to="/student/detail" className="btn btn-primary" onClick={() => this.onViewDetail(student)}>
+                    <Link to="/studentDetail" className="btn btn-primary" onClick={() => this.onViewDetail(student)}>
                         View
                     </Link>
                 </td>

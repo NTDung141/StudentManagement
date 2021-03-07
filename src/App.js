@@ -11,7 +11,6 @@ import routes from "./routes";
 class App extends Component {
 
   render() {
-    console.log(this.props.isViewDetail);
 
     return (
       < Router >

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Student from "./Student";
+import { connect } from "react-redux";
+import * as actions from "../actions/index";
 
 class StudentList extends Component {
     constructor(props) {
@@ -11,21 +12,11 @@ class StudentList extends Component {
     }
 
     componentDidMount() {
-        axios({
-            method: "GET",
-            url: "http://localhost:3000/students",
-            data: null
-        }).then(res => {
-            this.setState({
-                studentList: res.data
-            })
-        }).catch(err => {
-            console.log(err);
-        })
+        this.props.fetchAllStudents();
     }
 
     render() {
-        const { studentList } = this.state;
+        const studentList = this.props.students;
         const elmStudents = studentList.map((student, index) => {
             return <Student key={student.id} index={index} student={student} />
         })
@@ -73,4 +64,18 @@ class StudentList extends Component {
     }
 }
 
-export default StudentList;
+const mapStateToProps = (state) => {
+    return {
+        students: state.students
+    };
+};
+
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        fetchAllStudents: () => {
+            dispatch(actions.actFetchStudentRequest());
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentList);

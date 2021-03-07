@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import '../App.css';
+import * as actions from "../actions/index";
 
 class StudentDetails extends Component {
+
+    onEditing(student) {
+        this.props.onEditing(student);
+    }
 
     render() {
         var student = this.props.isViewDetail;
@@ -42,22 +48,22 @@ class StudentDetails extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                    <label>Faculity</label>
+                                    <label>Faculty</label>
                                 </td>
                                 <td>
-                                    <label>{student.faculity}</label>
+                                    <label>{student.faculty}</label>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <button className="btn btn-warning">
+                    <Link to="/add" className="btn btn-warning" onClick={() => this.onEditing(student)}>
                         Update
-                    </button>
+                    </Link>
 
-                    <button className="btn btn-primary pull-right">
+                    <Link to="/students" className="btn btn-primary pull-right">
                         Back
-                    </button>
+                    </Link>
 
                 </div>
             )
@@ -78,4 +84,12 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, null)(StudentDetails);
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        onEditing: (student) => {
+            dispatch(actions.editingStudent(student));
+        }
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentDetails);
