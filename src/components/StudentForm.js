@@ -26,6 +26,15 @@ class StudentForm extends Component {
                 faculty: student.faculty
             })
         }
+
+        if (this.props.isAdd) {
+            this.setState({
+                id: "",
+                name: "",
+                gender: "",
+                faculty: ""
+            })
+        }
     }
 
     onChange(event) {
@@ -38,19 +47,30 @@ class StudentForm extends Component {
     }
 
     componentWillUnmount() {
-        this.props.onEditing(null, false);
+        this.props.onEditing(null);
+        this.setState({
+            id: "",
+            name: "",
+            gender: "",
+            faculty: ""
+        })
     }
 
     onSave(event) {
         event.preventDefault();
-        console.log(this.state);
+        if (this.props.isAdd) {
+            this.props.onAddStudent(this.state);
+        }
+        else {
+            console.log("update");
+        }
     }
 
     render() {
         var student = this.state;
         return (
             <div className="container mt-3">
-                <h1 className="center mb-5">{student.id !== null ? "Update Student Infomation" : "New Student Infomation"}</h1>
+                <h1 className="center mb-5">{student.id !== "" ? "Update Student Infomation" : "New Student Infomation"}</h1>
                 <div className="center">
                     <form onSubmit={(event) => this.onSave(event)}>
                         <div classname="mb-3">
@@ -90,6 +110,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         onEditing: (student, isUpdate) => {
             dispatch(actions.editingStudent(student, isUpdate));
+        },
+        onAddStudent: (student) => {
+            dispatch(actions.actAddStudentRequest(student));
         }
     };
 };

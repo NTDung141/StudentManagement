@@ -29,6 +29,27 @@ export const viewDetail = (student) => {
     };
 };
 
+export const actAddStudentRequest = (student) => {
+    return dispatch => {
+        return axios({
+            method: "POST",
+            url: "http://localhost:3000/students",
+            data: student
+        }).then(res => {
+            dispatch(actAddStudent(res.data));
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+};
+
+export const actAddStudent = (student) => {
+    return {
+        type: types.ADD_STUDENT,
+        student
+    };
+};
+
 export const editingStudent = (student) => {
     return {
         type: types.EDIT_STUDENT,

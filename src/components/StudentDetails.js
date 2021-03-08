@@ -57,7 +57,7 @@ class StudentDetails extends Component {
                         </tbody>
                     </table>
 
-                    <Link to="/add" className="btn btn-warning" onClick={() => this.onEditing(student)}>
+                    <Link to="/update" className="btn btn-warning" onClick={() => this.onEditing(student)}>
                         Update
                     </Link>
 

@@ -18,6 +18,11 @@ const routes = [
     {
         path: "/add",
         exact: false,
+        main: () => <StudentForm isAdd={true} />
+    },
+    {
+        path: "/update",
+        exact: false,
         main: () => <StudentForm />
     },
     {

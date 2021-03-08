@@ -7,6 +7,11 @@ var myReducer = (state = initialState, action) => {
         case types.FECTH_STUDENT:
             state = action.students;
             return [...state];
+
+        case types.ADD_STUDENT:
+            var newStudent = action.student;
+            state.push(newStudent);
+            return [...state];
         default:
             return state;
     }
