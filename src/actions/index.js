@@ -100,3 +100,10 @@ export const actDeleteStudent = (student) => {
         student
     };
 };
+
+export const filterStudent = (filter) => {
+    return {
+        type: types.FILTER_TABLE,
+        filter
+    }
+}

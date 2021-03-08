@@ -7,7 +7,8 @@ class StudentList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            studentList: []
+            filterId: "",
+            fitlerName: ""
         }
     }
 
@@ -15,8 +16,38 @@ class StudentList extends Component {
         this.props.fetchAllStudents();
     }
 
+    onChange(event) {
+        var target = event.target;
+        var name = target.name;
+        var value = target.value;
+        this.setState({
+            [name]: value
+        })
+        var filterStudent = {
+            id: name === "filterId" ? value : this.state.filterId,
+            name: name === "filterName" ? value : this.state.fitlerName
+        }
+        this.props.onFilterTable(filterStudent);
+    }
+
     render() {
-        const studentList = this.props.students;
+        var studentList = this.props.students;
+        var filterTable = this.props.filterTable;
+
+        // filter data
+        if (filterTable) {
+            if (filterTable.name) {
+                studentList = studentList.filter((student) => {
+                    return student.name.toLowerCase().indexOf(filterTable.name) !== -1;
+                })
+            }
+            if (filterTable.id) {
+                studentList = studentList.filter((student) => {
+                    return student.id.toLowerCase().indexOf(filterTable.id) !== -1;
+                })
+            }
+        }
+
         const elmStudents = studentList.map((student, index) => {
             return <Student key={student.id} index={index} student={student} />
         })
@@ -41,8 +72,8 @@ class StudentList extends Component {
                                 <input
                                     type="text"
                                     className="form-control"
-                                    name="filterID"
-                                // onChange={this.onChange}
+                                    name="filterId"
+                                    onChange={(event) => this.onChange(event)}
                                 />
                             </td>
                             <td>
@@ -50,7 +81,7 @@ class StudentList extends Component {
                                     type="text"
                                     className="form-control"
                                     name="filterName"
-                                // onChange={this.onChange}
+                                    onChange={(event) => this.onChange(event)}
                                 />
                             </td>
                             <td></td>
@@ -66,7 +97,8 @@ class StudentList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        students: state.students
+        students: state.students,
+        filterTable: state.filterTable
     };
 };
 
@@ -74,6 +106,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         fetchAllStudents: () => {
             dispatch(actions.actFetchStudentRequest());
+        },
+        onFilterTable: (filter) => {
+            dispatch(actions.filterStudent(filter))
         }
     }
 }

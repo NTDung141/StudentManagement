@@ -4,3 +4,4 @@ export const UPDATE_STUDENT = "UPDATE_STUDENT";
 export const DELETE_STUDENT = "DELETE_STUDENT";
 export const EDIT_STUDENT = "EDIT_STUDENT";
 export const VIEW_DETAIL = "VIEW_DETAIL";
+export const FILTER_TABLE = "FILTER_TABLE";
