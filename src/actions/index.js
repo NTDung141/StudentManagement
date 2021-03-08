@@ -56,3 +56,24 @@ export const editingStudent = (student) => {
         student
     };
 };
+
+export const actUpdateStudentRequest = (student) => {
+    return dispatch => {
+        return axios({
+            method: "PUT",
+            url: `http://localhost:3000/students/${student.id}`,
+            data: student
+        }).then(res => {
+            dispatch(actUpdateStudent(res.data));
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+};
+
+export const actUpdateStudent = (student) => {
+    return {
+        type: types.UPDATE_STUDENT,
+        student
+    };
+};

@@ -62,7 +62,7 @@ class StudentForm extends Component {
             this.props.onAddStudent(this.state);
         }
         else {
-            console.log("update");
+            this.props.onUpdateStudent(this.state);
         }
     }
 
@@ -113,6 +113,9 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         onAddStudent: (student) => {
             dispatch(actions.actAddStudentRequest(student));
+        },
+        onUpdateStudent: (student) => {
+            dispatch(actions.actUpdateStudentRequest(student));
         }
     };
 };
