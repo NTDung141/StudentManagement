@@ -77,3 +77,26 @@ export const actUpdateStudent = (student) => {
         student
     };
 };
+
+export const actDeleteStudentRequest = (student) => {
+    return dispatch => {
+        return axios({
+            method: "DELETE",
+            url: `http://localhost:3000/students/${student.id}`,
+            data: null
+        }).then(res => {
+            dispatch(actDeleteStudent(res.data));
+            console.log(student);
+            console.log(res.data);
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+};
+
+export const actDeleteStudent = (student) => {
+    return {
+        type: types.DELETE_STUDENT,
+        student
+    };
+};

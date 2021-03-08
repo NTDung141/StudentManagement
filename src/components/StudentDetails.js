@@ -10,6 +10,10 @@ class StudentDetails extends Component {
         this.props.onEditing(student);
     }
 
+    onDelete(student) {
+        this.props.onDelete(student);
+    }
+
     render() {
         var student = this.props.isViewDetail;
 
@@ -61,6 +65,10 @@ class StudentDetails extends Component {
                         Update
                     </Link>
 
+                    <button className="btn btn-danger ml-3" onClick={() => this.onDelete(student)}>
+                        Delete
+                    </button>
+
                     <Link to="/students" className="btn btn-primary pull-right">
                         Back
                     </Link>
@@ -88,6 +96,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         onEditing: (student) => {
             dispatch(actions.editingStudent(student));
+        },
+        onDelete: (student) => {
+            dispatch(actions.actDeleteStudentRequest(student));
         }
     };
 };

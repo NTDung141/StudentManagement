@@ -92,7 +92,7 @@ class StudentForm extends Component {
                             <input className="ml-3" type="radio" id="female" name="gender" value="female" checked={student.gender !== "" ? (student.gender === "female" ? true : false) : false} onChange={this.onChange} />
                             <label className="ml-2">Female</label>
                         </div>
-                        <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                        <button type="submit" className="btn btn-primary mt-3">{this.props.isAdd ? "Add" : "Update"}</button>
                     </form>
                 </div>
             </div>

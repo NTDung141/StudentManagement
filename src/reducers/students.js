@@ -13,6 +13,7 @@ var findIndex = (students, id) => {
 }
 
 var myReducer = (state = initialState, action) => {
+    var index = -1;
     switch (action.type) {
         case types.FECTH_STUDENT:
             state = action.students;
@@ -24,9 +25,16 @@ var myReducer = (state = initialState, action) => {
             return [...state];
 
         case types.UPDATE_STUDENT:
-            var index = findIndex(state, action.student.id);
+            index = findIndex(state, action.student.id);
             state[index] = action.student;
             return [...state];
+
+        case types.DELETE_STUDENT:
+            index = findIndex(state.action.student.id);
+            if (index !== -1) {
+                state.splice(index, 1);
+            }
+            return [...state]
         default:
             return state;
     }
