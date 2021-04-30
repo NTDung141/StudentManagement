@@ -38,12 +38,12 @@ class StudentList extends Component {
         if (filterTable) {
             if (filterTable.name) {
                 studentList = studentList.filter((student) => {
-                    return student.name.toLowerCase().indexOf(filterTable.name) !== -1;
+                    return student.name.toLowerCase().indexOf(filterTable.name.toLowerCase()) !== -1;
                 })
             }
             if (filterTable.id) {
                 studentList = studentList.filter((student) => {
-                    return student.id.toLowerCase().indexOf(filterTable.id) !== -1;
+                    return student.id.toLowerCase().indexOf(filterTable.id.toLowerCase()) !== -1;
                 })
             }
         }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 import * as actions from "../actions/index";
 import "../App.css";
 
@@ -11,7 +12,9 @@ class StudentForm extends Component {
             id: "",
             name: "",
             gender: "",
-            faculty: ""
+            faculty: "",
+            redirect: null
+
         }
         this.onChange = this.onChange.bind(this);
     }
@@ -32,7 +35,8 @@ class StudentForm extends Component {
                 id: "",
                 name: "",
                 gender: "",
-                faculty: ""
+                faculty: "",
+                redirect: null
             })
         }
     }
@@ -52,7 +56,8 @@ class StudentForm extends Component {
             id: "",
             name: "",
             gender: "",
-            faculty: ""
+            faculty: "",
+            redirect: null
         })
     }
 
@@ -60,14 +65,31 @@ class StudentForm extends Component {
         event.preventDefault();
         if (this.props.isAdd) {
             this.props.onAddStudent(this.state);
+            this.props.fetchAllStudents();
+            this.setState({
+                redirect: "/students"
+            })
         }
         else {
+            console.log(this.state);
             this.props.onUpdateStudent(this.state);
+            this.props.fetchAllStudents();
+            this.setState({
+                redirect: "/studentDetail"
+            })
         }
+    }
+
+    onViewDetail(student) {
+        this.props.onViewDetail(student);
     }
 
     render() {
         var student = this.state;
+        if (this.state.redirect !== null) {
+            this.onViewDetail(student);
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div className="container mt-3">
                 <h1 className="center mb-5">{student.id !== "" ? "Update Student Infomation" : "New Student Infomation"}</h1>
@@ -116,6 +138,12 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         onUpdateStudent: (student) => {
             dispatch(actions.actUpdateStudentRequest(student));
+        },
+        onViewDetail: (student) => {
+            dispatch(actions.viewDetail(student));
+        },
+        fetchAllStudents: () => {
+            dispatch(actions.actFetchStudentRequest());
         }
     };
 };

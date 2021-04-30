@@ -19,11 +19,6 @@ const menu = [
         name: "Add new",
         to: "/add",
         exact: false
-    },
-    {
-        name: "Login",
-        to: "/login",
-        exact: false
     }
 ];
 

@@ -11,6 +11,7 @@ class StudentDetails extends Component {
     }
 
     onDelete(student) {
+        this.props.fetchAllStudents();
         this.props.onDelete(student);
     }
 
@@ -21,7 +22,7 @@ class StudentDetails extends Component {
             return (
                 <div className="container info-form">
                     <div className="mb-3 mt-3 text-center">
-                        <h1>Student List</h1>
+                        <h1>Student Detail</h1>
                     </div>
 
                     <table className="table table-hover">
@@ -65,12 +66,12 @@ class StudentDetails extends Component {
                         Update
                     </Link>
 
-                    <button className="btn btn-danger ml-3" onClick={() => this.onDelete(student)}>
+                    <Link to="/students" className="btn btn-danger ml-3" onClick={() => this.onDelete(student)}>
                         Delete
-                    </button>
+                    </Link>
 
                     <Link to="/students" className="btn btn-primary pull-right">
-                        Back
+                        Back to Student list
                     </Link>
 
                 </div>
@@ -99,6 +100,9 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         onDelete: (student) => {
             dispatch(actions.actDeleteStudentRequest(student));
+        },
+        fetchAllStudents: () => {
+            dispatch(actions.actFetchStudentRequest());
         }
     };
 };
