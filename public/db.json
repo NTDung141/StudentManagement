@@ -1,0 +1,45 @@
+{
+    "students": [
+        {
+            "id": "101",
+            "name": "Nguyen Thanh Dung",
+            "gender": "male",
+            "faculty": "IT",
+            "redirect": null
+        },
+        {
+            "id": "102",
+            "name": "Le Canh Kieu Oanh",
+            "gender": "female",
+            "faculty": "IT"
+        },
+        {
+            "id": "103",
+            "name": "Pham Van Tanh",
+            "gender": "male",
+            "faculty": "PM",
+            "redirect": null
+        },
+        {
+            "id": "104",
+            "name": "Huynh Duc Anh",
+            "gender": "male",
+            "faculty": "Business",
+            "redirect": null
+        },
+        {
+            "id": "105",
+            "name": "Le Hoang Bao Long",
+            "gender": "male",
+            "faculty": "Freelancer",
+            "redirect": null
+        },
+        {
+            "id": "106",
+            "name": "Do Van Trinh",
+            "gender": "male",
+            "faculty": "IT",
+            "redirect": null
+        }
+    ]
+}
