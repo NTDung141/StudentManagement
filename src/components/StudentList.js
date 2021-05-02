@@ -12,7 +12,7 @@ class StudentList extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.props.fetchAllStudents();
     }
 
