@@ -5,7 +5,7 @@ export const actFetchStudentRequest = () => {
     return dispatch => {
         return axios({
             method: "GET",
-            url: "http://localhost:3000/students",
+            url: "https://student-server-demo1.herokuapp.com/students",
             data: null
         }).then(res => {
             dispatch(actFetchStudent(res.data))
@@ -33,7 +33,7 @@ export const actAddStudentRequest = (student) => {
     return dispatch => {
         return axios({
             method: "POST",
-            url: "http://localhost:3000/students",
+            url: "https://student-server-demo1.herokuapp.com/students",
             data: student
         }).then(res => {
             dispatch(actAddStudent(res.data));
@@ -61,7 +61,7 @@ export const actUpdateStudentRequest = (student) => {
     return dispatch => {
         return axios({
             method: "PUT",
-            url: `http://localhost:3000/students/${student.id}`,
+            url: `https://student-server-demo1.herokuapp.com/students/${student.id}`,
             data: student
         }).then(res => {
             dispatch(actUpdateStudent(res.data));
@@ -82,7 +82,7 @@ export const actDeleteStudentRequest = (student) => {
     return dispatch => {
         return axios({
             method: "DELETE",
-            url: `http://localhost:3000/students/${student.id}`,
+            url: `https://student-server-demo1.herokuapp.com/students/${student.id}`,
             data: null
         }).then(res => {
             dispatch(actDeleteStudent(res.data));
